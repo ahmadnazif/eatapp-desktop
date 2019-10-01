@@ -8,7 +8,7 @@ using EatAppDesktop.Extensions;
 
 namespace EatAppDesktop.Helpers
 {
-    public class UserAuthHelper
+    public class UserAccountHelper
     {
        private static Properties.Settings prop = Properties.Settings.Default;
 

@@ -38,7 +38,14 @@
             this.textBox_OldPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_ChangePersonalInfo = new System.Windows.Forms.Button();
+            this.textBox_Email = new System.Windows.Forms.TextBox();
+            this.textBox_FullName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -135,11 +142,70 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Old password";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button_ChangePersonalInfo);
+            this.groupBox2.Controls.Add(this.textBox_Email);
+            this.groupBox2.Controls.Add(this.textBox_FullName);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(297, 98);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(275, 357);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Personal info";
+            // 
+            // button_ChangePersonalInfo
+            // 
+            this.button_ChangePersonalInfo.Location = new System.Drawing.Point(29, 252);
+            this.button_ChangePersonalInfo.Name = "button_ChangePersonalInfo";
+            this.button_ChangePersonalInfo.Size = new System.Drawing.Size(221, 27);
+            this.button_ChangePersonalInfo.TabIndex = 9;
+            this.button_ChangePersonalInfo.Text = "Change Now";
+            this.button_ChangePersonalInfo.UseVisualStyleBackColor = true;
+            this.button_ChangePersonalInfo.Click += new System.EventHandler(this.button_ChangePersonalInfo_Click);
+            // 
+            // textBox_Email
+            // 
+            this.textBox_Email.Location = new System.Drawing.Point(29, 168);
+            this.textBox_Email.Name = "textBox_Email";
+            this.textBox_Email.PasswordChar = '*';
+            this.textBox_Email.Size = new System.Drawing.Size(221, 25);
+            this.textBox_Email.TabIndex = 8;
+            // 
+            // textBox_FullName
+            // 
+            this.textBox_FullName.Location = new System.Drawing.Point(29, 100);
+            this.textBox_FullName.Name = "textBox_FullName";
+            this.textBox_FullName.PasswordChar = '*';
+            this.textBox_FullName.Size = new System.Drawing.Size(221, 25);
+            this.textBox_FullName.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 19);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Email address";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 19);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Full name";
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 467);
+            this.ClientSize = new System.Drawing.Size(589, 467);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_LoginTime);
             this.Controls.Add(this.label2);
@@ -155,6 +221,8 @@
             this.Load += new System.EventHandler(this.Manage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +240,11 @@
         private System.Windows.Forms.TextBox textBox_OldPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button_ChangePersonalInfo;
+        private System.Windows.Forms.TextBox textBox_Email;
+        private System.Windows.Forms.TextBox textBox_FullName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

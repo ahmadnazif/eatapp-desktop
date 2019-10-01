@@ -33,6 +33,7 @@
             this.textBox_Username = new System.Windows.Forms.TextBox();
             this.textBox_Password = new System.Windows.Forms.TextBox();
             this.button_Login = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -78,12 +79,23 @@
             this.button_Login.UseVisualStyleBackColor = true;
             this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(16, 181);
+            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(221, 8);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 5;
+            this.progressBar1.Visible = false;
+            // 
             // Login
             // 
             this.AcceptButton = this.button_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(249, 230);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button_Login);
             this.Controls.Add(this.textBox_Password);
             this.Controls.Add(this.textBox_Username);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.TextBox textBox_Username;
         private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Button button_Login;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

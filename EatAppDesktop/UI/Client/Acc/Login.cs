@@ -1,5 +1,5 @@
 ﻿using EatAppDesktop.Helpers;
-using Auth = EatAppDesktop.Helpers.UserAuthHelper;
+using Auth = EatAppDesktop.Helpers.UserAccountHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,23 +29,31 @@ namespace EatAppDesktop.UI.Client.Acc
 
         }
 
+        private void SHOW_PROGRESSBAR(bool show) => BeginInvoke(new Action(() => { progressBar1.Visible = show; }));
+
         private async void button_Login_Click(object sender, EventArgs e)
         {
             if (await api.IsAccessibleAsync())
             {
+                SHOW_PROGRESSBAR(true);
                 var resp = await Auth.LoginAsync(api, textBox_Username.Text, textBox_Password.Text);
-                MessageBox.Show(resp.Message, "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (resp.IsSuccess)
                 {
+                    MessageBox.Show($"Welcome, {textBox_Username.Text}", "Login success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     mainScreen.LoadAuthentication();
                 }
+                else MessageBox.Show(resp.Message, "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                SHOW_PROGRESSBAR(false);
                 textBox_Username.Focus();
             }
             else
+            {
                 MessageBox.Show(Switcher.NOT_ACCESSIBLE, "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                SHOW_PROGRESSBAR(false);
+            }
         }
     }
 }

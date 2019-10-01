@@ -52,9 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BaseRating.cs" />
+    <Compile Include="Common\FnbType.cs" />
     <Compile Include="Extensions\DateTimeExtension.cs" />
     <Compile Include="Helpers\RestApiHelper.cs" />
-    <Compile Include="Helpers\UserAuthHelper.cs" />
+    <Compile Include="Helpers\UserAccountHelper.cs" />
+    <Compile Include="Models\Fnb.cs" />
+    <Compile Include="Models\FnbComment.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAuthResponse.cs" />
     <Compile Include="Models\UserChangePassword.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -71,6 +76,12 @@
     </Compile>
     <Compile Include="UI\Client\Acc\Manage.Designer.cs">
       <DependentUpon>Manage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Client\Fnb\Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Client\Fnb\Add.Designer.cs">
+      <DependentUpon>Add.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Client\MainScreen.cs">
       <SubType>Form</SubType>
@@ -98,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Client\Acc\Manage.resx">
       <DependentUpon>Manage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Client\Fnb\Add.resx">
+      <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Client\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>

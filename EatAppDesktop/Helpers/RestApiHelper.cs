@@ -1,4 +1,5 @@
-﻿using EatAppDesktop.Models;
+﻿using EatAppDesktop.Common;
+using EatAppDesktop.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,8 +53,7 @@ namespace EatAppDesktop.Helpers
 
                 var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/user/login", login);
 
-                var stream = await resp.Content.ReadAsStreamAsync();
-                var json = await new StreamReader(stream).ReadToEndAsync();
+                var json = await resp.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<UserAuthResponse>(json);
             }
             catch (Exception ex)
@@ -65,6 +65,26 @@ namespace EatAppDesktop.Helpers
                 };
             }
         }
+
+        public async Task<User> GetUserAsync(string username)
+        {
+            try
+            {
+                var resp = await client.GetAsync($"api/user/get-by-username?username={username}");
+                if (resp.IsSuccessStatusCode)
+                {
+                    var json = await resp.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<User>(json);
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
         public async Task<UserAuthResponse> ChangePasswordAsync(string username, string oldPassword, string newPassword)
         {
@@ -79,8 +99,7 @@ namespace EatAppDesktop.Helpers
 
                 var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/user/change-password", cp);
 
-                var stream = await resp.Content.ReadAsStreamAsync();
-                var json = await new StreamReader(stream).ReadToEndAsync();
+                var json = await resp.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<UserAuthResponse>(json);
             }
             catch (Exception ex)
@@ -90,6 +109,64 @@ namespace EatAppDesktop.Helpers
                     IsSuccess = false,
                     Message = ex.Message
                 };
+            }
+        }
+
+        public async Task<List<Fnb>> ListAllFnbAsync()
+        {
+            try
+            {
+                var resp = await client.GetAsync($"{BaseUrl}/api/fnb/list-all");
+                if (resp.IsSuccessStatusCode)
+                {
+                    var json = await resp.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<Fnb>>(json);
+                }
+                else
+                    return new List<Fnb>();
+            }
+            catch
+            {
+                return new List<Fnb>();
+            }
+        }
+
+        public async Task<string> AddFnbAsync(string fnbName, FnbType fnbType)
+        {
+            try
+            {
+                Fnb fnb = new Fnb
+                {
+                    Name = fnbName,
+                    FnbType = fnbType
+                };
+
+                var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/fnb/add", fnb);
+                return await resp.Content.ReadAsStringAsync();
+            }
+            catch(Exception ex)
+            {
+
+                return ex.Message;
+            }
+        }
+
+        public async Task<List<FnbComment>> ListAllFnbCommentAsync(int fnbId)
+        {
+            try
+            {
+                var resp = await client.GetAsync($"{BaseUrl}/api/fnb-comment/list-all?fnbid={fnbId}");
+                if (resp.IsSuccessStatusCode)
+                {
+                    var json = await resp.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<FnbComment>>(json);
+                }
+                else
+                    return new List<FnbComment>();
+            }
+            catch
+            {
+                return new List<FnbComment>();
             }
         }
 
