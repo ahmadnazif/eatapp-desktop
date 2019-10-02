@@ -46,5 +46,17 @@ namespace EatAppDesktop.Properties {
                 this["currentUsernameLoginTimeStr"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("99")]
+        public int currentUserRoleId {
+            get {
+                return ((int)(this["currentUserRoleId"]));
+            }
+            set {
+                this["currentUserRoleId"] = value;
+            }
+        }
     }
 }

@@ -66,6 +66,25 @@ namespace EatAppDesktop.Helpers
             }
         }
 
+        public async Task<List<User>> ListAllUserAsync()
+        {
+            try
+            {
+                var resp = await client.GetAsync($"api/user/list-all");
+                if (resp.IsSuccessStatusCode)
+                {
+                    var json = await resp.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<User>>(json);
+                }
+
+                return new List<User>();
+            }
+            catch
+            {
+                return new List<User>();
+            }
+        }
+
         public async Task<User> GetUserAsync(string username)
         {
             try
@@ -112,6 +131,34 @@ namespace EatAppDesktop.Helpers
             }
         }
 
+        public async Task<UserAuthResponse> UpdateUserAsync(string username, string email, string fullname)
+        {
+            try
+            {
+                var user = new User
+                {
+                    Username = username,
+                    Fullname = fullname,
+                    Email = email
+                };
+
+                var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/user/update", user);
+
+                var json = await resp.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<UserAuthResponse>(json);
+            }
+            catch (Exception ex)
+            {
+                return new UserAuthResponse
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
+
+
         public async Task<List<Fnb>> ListAllFnbAsync()
         {
             try
@@ -144,12 +191,13 @@ namespace EatAppDesktop.Helpers
                 var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/fnb/add", fnb);
                 return await resp.Content.ReadAsStringAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
                 return ex.Message;
             }
         }
+
 
         public async Task<List<FnbComment>> ListAllFnbCommentAsync(int fnbId)
         {
@@ -169,6 +217,43 @@ namespace EatAppDesktop.Helpers
                 return new List<FnbComment>();
             }
         }
+
+        public async Task<int> CountAllFnbCommentAsync(int fnbId)
+        {
+            try
+            {
+                var resp = await client.GetAsync($"{BaseUrl}/api/fnb-comment/count?fnbid={fnbId}");
+                return resp.IsSuccessStatusCode ? int.Parse(await resp.Content.ReadAsStringAsync()) : 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public async Task<string> AddFnbCommentAsync(int fnbId, string comment, int rating, int commenterId)
+        {
+            try
+            {
+                FnbComment fnbComment = new FnbComment
+                {
+                    FnbId = fnbId,
+                    Comment = comment,
+                    Rating = rating,
+                    CommenterId = commenterId,
+                    BaseRating = BaseRating.Ten
+                };
+
+                var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/fnb-comment/add", fnbComment);
+                return await resp.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+
+                return ex.Message;
+            }
+        }
+
 
     }
 }

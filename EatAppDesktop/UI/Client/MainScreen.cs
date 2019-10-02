@@ -1,16 +1,13 @@
-﻿using EatAppDesktop.Helpers;
-using Auth = EatAppDesktop.Helpers.UserAccountHelper;
+﻿using EatAppDesktop.Extensions;
+using EatAppDesktop.Helpers;
+using EatAppDesktop.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using EatAppDesktop.Models;
-using EatAppDesktop.Extensions;
+using Auth = EatAppDesktop.Helpers.AccAuthHelper;
 
 namespace EatAppDesktop.UI.Client
 {
@@ -18,11 +15,13 @@ namespace EatAppDesktop.UI.Client
     {
         private readonly Switcher switcher;
         private readonly RestApiHelper api;
+        private readonly List<User> allUser;
 
-        public MainScreen(Switcher switcher, RestApiHelper api)
+        public MainScreen(Switcher switcher, RestApiHelper api, List<User> allUser)
         {
             this.switcher = switcher;
             this.api = api;
+            this.allUser = allUser;
             InitializeComponent();
         }
 
@@ -35,16 +34,19 @@ namespace EatAppDesktop.UI.Client
             label_ConnectedTo.Text = $"Currently connected to {api.BaseUrl}";
             LoadAuthentication();
 
-            if(await api.IsAccessibleAsync())
+            if (await api.IsAccessibleAsync())
+            {
                 await LoadGvAsync();
+            }
         }
 
         public void LoadAuthentication()
         {
+            var loginInfo = $"Username: {Auth.CurrentUsername} ({(Auth.CurrentUserRole)})\nLogin time: {Auth.LoggedInTime}";
+            label_UserInfo.Text = Auth.IsAuthenticated ? loginInfo : "Please login to submit comment";
             button_ChangeAuth.Text = Auth.IsAuthenticated ? "Logout" : "Login";
             button_ManageAcc.Visible = Auth.IsAuthenticated ? true : false;
-            var loginInfo = $"Username: {Auth.CurrentUsername}\nLogin time: {Auth.LoggedInTime}";
-            label_UserInfo.Text = Auth.IsAuthenticated ? loginInfo : "Please login to submit comment";
+            button_AddNew.Visible = Auth.IsAuthenticated ? true : false;
         }
 
         private void button_ChangeAuth_Click(object sender, EventArgs e)
@@ -64,9 +66,19 @@ namespace EatAppDesktop.UI.Client
 
         private void button_ManageAcc_Click(object sender, EventArgs e) => new Acc.Manage(this, api).ShowDialog();
 
+        private void ENABLE_BUTTONS(bool enable)
+        {
+            button_SubmitReview.Enabled = enable;
+            button_AddNew.Enabled = enable;
+            button_Reload.Enabled = enable;
+            button_ChangeAuth.Enabled = enable;
+            button_ManageAcc.Enabled = enable;
+        }
+
         public async Task LoadGvAsync()
         {
             SHOW_PROGRESSBAR(true);
+            ENABLE_BUTTONS(false);
             var fnbList = await api.ListAllFnbAsync();
             label_ReloadTime.Text = $"List loaded on {DateTime.Now.ToDbDateTimeString()}";
             var gv = this.DataGridView;
@@ -75,7 +87,6 @@ namespace EatAppDesktop.UI.Client
             dt.Columns.Add("ID");
             dt.Columns.Add("Fnb name");
             dt.Columns.Add("Type");
-            dt.Columns.Add("Total review");
             dt.Columns.Add("Added on");
 
             int i = 0;
@@ -85,8 +96,7 @@ namespace EatAppDesktop.UI.Client
                 dr[0] = fnb.Id;
                 dr[1] = fnb.Name;
                 dr[2] = fnb.FnbType;
-                dr[3] = 0; // fnb.MessageContent;
-                dr[4] = fnb.CreatedTime.ToDbDateTimeString();
+                dr[3] = fnb.CreatedTime.ToDbDateTimeString();
                 dt.Rows.Add(dr);
 
                 i++;
@@ -101,11 +111,11 @@ namespace EatAppDesktop.UI.Client
             gv.Columns[0].Width = 50;
             gv.Columns[1].Width = 230;
             gv.Columns[2].Width = 130;
-            gv.Columns[3].Width = 130;
-            gv.Columns[4].Width = 170;
+            gv.Columns[3].Width = 170;
 
             CommonProperties(gv);
             SHOW_PROGRESSBAR(false);
+            ENABLE_BUTTONS(true);
         }
 
         private void CommonProperties(DataGridView gv)
@@ -134,12 +144,21 @@ namespace EatAppDesktop.UI.Client
                 await LoadGvAsync();
         }
 
-        private void button_AddNew_Click(object sender, EventArgs e)
+        private void button_AddNew_Click(object sender, EventArgs e) => new Fnb.Add(this, api).ShowDialog();
+
+        private void button_SubmitReview_Click(object sender, EventArgs e)
         {
-            if (Auth.IsAuthenticated)
-                new Fnb.Add(this, api).ShowDialog();
+            var gv = DataGridView;
+            if (gv.SelectedRows.Count == 0)
+                MessageBox.Show("Please select a row", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
-                MessageBox.Show("Sorry, you are not allowed to add new FNB, please login", "Not allowed", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            {
+                var row = gv.SelectedRows[0];
+                var fnbId = row.Cells[0].Value.ToString();
+                var fnbName = row.Cells[1].Value.ToString();
+
+                new Fnb.Review(this, api, allUser, int.Parse(fnbId), fnbName).ShowDialog();
+            }
         }
     }
 }

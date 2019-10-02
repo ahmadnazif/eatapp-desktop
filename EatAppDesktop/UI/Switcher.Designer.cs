@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_Client = new System.Windows.Forms.Button();
             this.button_Admin = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -62,11 +63,22 @@
             this.button_Admin.UseVisualStyleBackColor = true;
             this.button_Admin.Click += new System.EventHandler(this.button_Admin_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(-3, 99);
+            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(336, 8);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 24;
+            this.progressBar1.Visible = false;
+            // 
             // Switcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 103);
+            this.ClientSize = new System.Drawing.Size(328, 107);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button_Admin);
             this.Controls.Add(this.button_Client);
             this.Controls.Add(this.label1);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_Client;
         private System.Windows.Forms.Button button_Admin;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

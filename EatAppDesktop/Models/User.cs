@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EatAppDesktop.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace EatAppDesktop.Models
         public string Fullname { get; set; }
         public string Email { get; set; }
         public string Avatar { get; set; }
+        public UserRole Role { get; set; }
         public DateTime CreatedTime { get; set; }
     }
 }

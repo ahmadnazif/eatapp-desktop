@@ -13,7 +13,9 @@ namespace EatAppDesktop.UI
 {
     public partial class Switcher : Form
     {
-        private readonly string baseUrl = "https://eatapi-254203.appspot.com";
+        //private readonly string baseUrl = "https://eatapi-254203.appspot.com";
+        private readonly string baseUrl = "http://localhost:5000";
+
         public const string NOT_ACCESSIBLE = "Sorry, the API isn't accessible right now";
         private RestApiHelper api;
 
@@ -22,23 +24,30 @@ namespace EatAppDesktop.UI
             InitializeComponent();
         }
 
+        private void SHOW_PROGRESSBAR(bool show) => BeginInvoke(new Action(() => { progressBar1.Visible = show; }));
+
         private void Switcher_Load(object sender, EventArgs e) => api = new RestApiHelper(baseUrl);
 
 
         private async void button_Client_Click(object sender, EventArgs e)
         {
+            SHOW_PROGRESSBAR(true);
             if (await api.IsAccessibleAsync())
             {
-                new Client.MainScreen(this, api).Show();
+                var allUser = await api.ListAllUserAsync();
+                new Client.MainScreen(this, api, allUser).Show();
                 this.Hide();
             }
             else
                 MessageBox.Show(NOT_ACCESSIBLE, "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            SHOW_PROGRESSBAR(false);
         }
 
         private void button_Admin_Click(object sender, EventArgs e)
         {
-
+            SHOW_PROGRESSBAR(true);
+            // todo
+            SHOW_PROGRESSBAR(false);
         }
 
     }

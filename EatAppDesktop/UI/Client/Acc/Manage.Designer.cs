@@ -44,6 +44,9 @@
             this.textBox_FullName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label_UserCreatedOn = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +54,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 19);
             this.label1.TabIndex = 0;
@@ -60,7 +63,7 @@
             // label_Username
             // 
             this.label_Username.AutoSize = true;
-            this.label_Username.Location = new System.Drawing.Point(117, 9);
+            this.label_Username.Location = new System.Drawing.Point(117, 12);
             this.label_Username.Name = "label_Username";
             this.label_Username.Size = new System.Drawing.Size(18, 19);
             this.label_Username.TabIndex = 1;
@@ -69,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Location = new System.Drawing.Point(12, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 19);
             this.label2.TabIndex = 2;
@@ -78,7 +81,7 @@
             // label_LoginTime
             // 
             this.label_LoginTime.AutoSize = true;
-            this.label_LoginTime.Location = new System.Drawing.Point(117, 38);
+            this.label_LoginTime.Location = new System.Drawing.Point(117, 34);
             this.label_LoginTime.Name = "label_LoginTime";
             this.label_LoginTime.Size = new System.Drawing.Size(18, 19);
             this.label_LoginTime.TabIndex = 3;
@@ -91,7 +94,7 @@
             this.groupBox1.Controls.Add(this.textBox_OldPassword);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(16, 98);
+            this.groupBox1.Location = new System.Drawing.Point(16, 101);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(275, 357);
             this.groupBox1.TabIndex = 4;
@@ -149,7 +152,7 @@
             this.groupBox2.Controls.Add(this.textBox_FullName);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(297, 98);
+            this.groupBox2.Location = new System.Drawing.Point(297, 101);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(275, 357);
             this.groupBox2.TabIndex = 10;
@@ -170,7 +173,6 @@
             // 
             this.textBox_Email.Location = new System.Drawing.Point(29, 168);
             this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.PasswordChar = '*';
             this.textBox_Email.Size = new System.Drawing.Size(221, 25);
             this.textBox_Email.TabIndex = 8;
             // 
@@ -178,7 +180,6 @@
             // 
             this.textBox_FullName.Location = new System.Drawing.Point(29, 100);
             this.textBox_FullName.Name = "textBox_FullName";
-            this.textBox_FullName.PasswordChar = '*';
             this.textBox_FullName.Size = new System.Drawing.Size(221, 25);
             this.textBox_FullName.TabIndex = 7;
             // 
@@ -200,11 +201,42 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Full name";
             // 
+            // label_UserCreatedOn
+            // 
+            this.label_UserCreatedOn.Location = new System.Drawing.Point(398, 34);
+            this.label_UserCreatedOn.Name = "label_UserCreatedOn";
+            this.label_UserCreatedOn.Size = new System.Drawing.Size(174, 19);
+            this.label_UserCreatedOn.TabIndex = 12;
+            this.label_UserCreatedOn.Text = "...";
+            this.label_UserCreatedOn.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(463, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(109, 19);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "User created on:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(-1, 0);
+            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(596, 8);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 23;
+            this.progressBar1.Visible = false;
+            // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 467);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label_UserCreatedOn);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label_LoginTime);
@@ -246,5 +278,8 @@
         private System.Windows.Forms.TextBox textBox_FullName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_UserCreatedOn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

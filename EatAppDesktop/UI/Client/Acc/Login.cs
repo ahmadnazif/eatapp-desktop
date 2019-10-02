@@ -1,5 +1,5 @@
 ﻿using EatAppDesktop.Helpers;
-using Auth = EatAppDesktop.Helpers.UserAccountHelper;
+using Auth = EatAppDesktop.Helpers.AccAuthHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +33,13 @@ namespace EatAppDesktop.UI.Client.Acc
 
         private async void button_Login_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(textBox_Username.Text) || string.IsNullOrWhiteSpace(textBox_Password.Text))
+            {
+                MessageBox.Show("Input needed", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                textBox_Username.Focus();
+                return;
+            }
+
             if (await api.IsAccessibleAsync())
             {
                 SHOW_PROGRESSBAR(true);

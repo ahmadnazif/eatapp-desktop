@@ -38,6 +38,7 @@
             this.label_ReloadTime = new System.Windows.Forms.Label();
             this.button_AddNew = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button_SubmitReview = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
@@ -129,12 +130,13 @@
             // 
             // button_AddNew
             // 
-            this.button_AddNew.Location = new System.Drawing.Point(13, 110);
+            this.button_AddNew.Location = new System.Drawing.Point(99, 110);
             this.button_AddNew.Name = "button_AddNew";
             this.button_AddNew.Size = new System.Drawing.Size(75, 27);
             this.button_AddNew.TabIndex = 21;
             this.button_AddNew.Text = "Add New";
             this.button_AddNew.UseVisualStyleBackColor = true;
+            this.button_AddNew.Visible = false;
             this.button_AddNew.Click += new System.EventHandler(this.button_AddNew_Click);
             // 
             // progressBar1
@@ -147,11 +149,22 @@
             this.progressBar1.TabIndex = 22;
             this.progressBar1.Visible = false;
             // 
+            // button_SubmitReview
+            // 
+            this.button_SubmitReview.Location = new System.Drawing.Point(13, 110);
+            this.button_SubmitReview.Name = "button_SubmitReview";
+            this.button_SubmitReview.Size = new System.Drawing.Size(80, 27);
+            this.button_SubmitReview.TabIndex = 23;
+            this.button_SubmitReview.Text = "Review";
+            this.button_SubmitReview.UseVisualStyleBackColor = true;
+            this.button_SubmitReview.Click += new System.EventHandler(this.button_SubmitReview_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 537);
+            this.Controls.Add(this.button_SubmitReview);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button_AddNew);
             this.Controls.Add(this.label_ReloadTime);
@@ -184,5 +197,6 @@
         private System.Windows.Forms.Label label_ReloadTime;
         private System.Windows.Forms.Button button_AddNew;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button_SubmitReview;
     }
 }
