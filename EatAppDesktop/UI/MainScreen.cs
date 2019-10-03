@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EatAppDesktop.Common;
 
 namespace EatAppDesktop.UI
 {
@@ -38,9 +39,11 @@ namespace EatAppDesktop.UI
             if (await api.IsAccessibleAsync())
             {
                 await LoadGvFnbAsync();
+
+                if (Auth.IsAuthenticated && Auth.CurrentUserRole == UserRole.Admin)
+                    await LoadGvUserAsync();
             }
 
-            LoadGvUser();
         }
 
         public void LoadAuthentication()
@@ -188,11 +191,11 @@ namespace EatAppDesktop.UI
         }
 
 
-        public void LoadGvUser()
+        public async Task LoadGvUserAsync()
         {
             SHOW_PROGRESSBAR(true);
             ENABLE_BUTTONS(false);
-            var userList = allUser.ToList();
+            var userList = await api.ListAllUserAsync();
             label_User_ReloadTime.Text = $"List loaded on {DateTime.Now.ToDbDateTimeString()}";
             var gv = this.DataGridView_User;
 
@@ -234,7 +237,7 @@ namespace EatAppDesktop.UI
             ENABLE_BUTTONS(true);
         }
 
-        private void button_User_Reload_Click(object sender, EventArgs e) => LoadGvUser();
+        private async void button_User_Reload_Click(object sender, EventArgs e) => await LoadGvUserAsync();
 
         private void button_User_AddNew_Click(object sender, EventArgs e) => new User.Add(this, api).ShowDialog();
     }

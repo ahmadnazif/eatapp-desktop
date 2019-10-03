@@ -49,11 +49,7 @@ namespace EatAppDesktop.UI.User
 
         private void SHOW_PROGRESSBAR(bool show) => BeginInvoke(new Action(() => { progressBar1.Visible = show; }));
 
-        private async void Add_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            mainScreen.allUser = await api.ListAllUserAsync();
-            mainScreen.LoadGvUser();
-        }
+        private async void Add_FormClosed(object sender, FormClosedEventArgs e) => await mainScreen.LoadGvUserAsync();
 
         private void textBox_Password_TextChanged(object sender, EventArgs e) => textBox_Hash.Text = PasswordHasher.GenerateHash(textBox_Password.Text);
     }

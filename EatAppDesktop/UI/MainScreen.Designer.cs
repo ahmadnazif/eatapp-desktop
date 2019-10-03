@@ -250,7 +250,7 @@
             this.label_User_ReloadTime.Name = "label_User_ReloadTime";
             this.label_User_ReloadTime.Size = new System.Drawing.Size(441, 25);
             this.label_User_ReloadTime.TabIndex = 23;
-            this.label_User_ReloadTime.Text = "...";
+            this.label_User_ReloadTime.Text = "Please do initial reload by clicking on \"Reload\" button first";
             this.label_User_ReloadTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainScreen
