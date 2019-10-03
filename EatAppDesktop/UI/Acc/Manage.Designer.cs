@@ -1,4 +1,4 @@
-﻿namespace EatAppDesktop.UI.Client.Acc
+﻿namespace EatAppDesktop.UI.Acc
 {
     partial class Manage
     {

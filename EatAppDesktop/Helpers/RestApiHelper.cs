@@ -131,6 +131,29 @@ namespace EatAppDesktop.Helpers
             }
         }
 
+        public async Task<string> AddUserAsync(string username, string passwordHash, string email, UserRole role)
+        {
+            try
+            {
+                User user = new User
+                {
+                    Username = username,
+                    PasswordHash = passwordHash,
+                    Email = email,
+                    Role = role
+                };
+
+                var resp = await client.PostAsJsonAsync($"{BaseUrl}/api/user/add", user);
+                return await resp.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+
+                return ex.Message;
+            }
+        }
+
+
         public async Task<UserAuthResponse> UpdateUserAsync(string username, string email, string fullname)
         {
             try

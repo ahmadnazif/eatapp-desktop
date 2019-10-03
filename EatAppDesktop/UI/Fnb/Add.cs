@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EatAppDesktop.UI.Client.Fnb
+namespace EatAppDesktop.UI.Fnb
 {
     public partial class Add : Form
     {
@@ -43,6 +43,6 @@ namespace EatAppDesktop.UI.Client.Fnb
 
         private void SHOW_PROGRESSBAR(bool show) => BeginInvoke(new Action(() => { progressBar1.Visible = show; }));
 
-        private async void Add_FormClosed(object sender, FormClosedEventArgs e) => await mainScreen.LoadGvAsync();
+        private async void Add_FormClosed(object sender, FormClosedEventArgs e) => await mainScreen.LoadGvFnbAsync();
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EatAppDesktop.Models;
 
-namespace EatAppDesktop.UI.Client.Fnb
+namespace EatAppDesktop.UI.Fnb
 {
     public partial class Review : Form
     {
@@ -20,9 +20,9 @@ namespace EatAppDesktop.UI.Client.Fnb
         private readonly RestApiHelper api;
         private readonly int fnbId;
         private readonly string fnbName;
-        private readonly List<User> allUser;
+        private readonly List<Models.User> allUser;
 
-        public Review(MainScreen mainScreen, RestApiHelper api, List<User> allUser, int fnbId, string fnbName)
+        public Review(MainScreen mainScreen, RestApiHelper api, List<Models.User> allUser, int fnbId, string fnbName)
         {
             this.mainScreen = mainScreen;
             this.api = api;

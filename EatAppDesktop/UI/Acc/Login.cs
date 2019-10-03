@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EatAppDesktop.UI.Client.Acc
+namespace EatAppDesktop.UI.Acc
 {
     public partial class Login : Form
     {

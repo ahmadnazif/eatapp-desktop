@@ -1,4 +1,4 @@
-﻿namespace EatAppDesktop.UI.Client.Fnb
+﻿namespace EatAppDesktop.UI.Fnb
 {
     partial class Review
     {
