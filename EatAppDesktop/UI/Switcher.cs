@@ -13,8 +13,8 @@ namespace EatAppDesktop.UI
 {
     public partial class Switcher : Form
     {
-        //private readonly string baseUrl = "https://eatapi-254203.appspot.com";
-        private readonly string baseUrl = "http://localhost:5000";
+        private readonly string baseUrl = "https://eatapi-254203.appspot.com";
+        //private readonly string baseUrl = "http://localhost:5000";
 
         public const string NOT_ACCESSIBLE = "Sorry, the API isn't accessible right now";
         private RestApiHelper api;
