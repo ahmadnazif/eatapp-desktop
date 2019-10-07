@@ -49,6 +49,7 @@ namespace EatAppDesktop.UI.Fnb
 
             label_FnbName.Text = fnbName;
             await LoadGvAsync();
+
         }
 
         public async Task LoadGvAsync()
@@ -65,6 +66,8 @@ namespace EatAppDesktop.UI.Fnb
             dt.Columns.Add("Comment");
             dt.Columns.Add("Added on");
 
+            int starRating = 0, ratingCount = 0;
+
             int i = 0;
             foreach (var fnbComment in fnbCommentList)
             {
@@ -77,6 +80,9 @@ namespace EatAppDesktop.UI.Fnb
                 dr[3] = fnbComment.Comment;
                 dr[4] = fnbComment.CreatedTime.ToDbDateTimeString();
                 dt.Rows.Add(dr);
+
+                starRating += fnbComment.Rating;
+                ratingCount++;
             }
 
             gv.DataSource = dt;
@@ -95,10 +101,13 @@ namespace EatAppDesktop.UI.Fnb
             SHOW_PROGRESSBAR(false);
             ENABLE_BUTTONS(true);
 
+            var starRatingPer5 = ratingCount > 0 ? Math.Round((double)starRating / ratingCount, 2) / 2 : 0;
+            label_StarRating.Text = $"{starRatingPer5} ⭐";
+
             string GetUser(int userId)
             {
                 var username = allUser.Where(d => d.Id == userId).Select(d => d.Username).SingleOrDefault();
-                return username == null ? $"Deleted user (UserId: {userId})" : username;
+                return username ?? $"Deleted user (UserId: {userId})";
             }
         }
 

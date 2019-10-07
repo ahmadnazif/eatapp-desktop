@@ -40,6 +40,7 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label_NotLogin = new System.Windows.Forms.Label();
+            this.label_StarRating = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -171,11 +172,22 @@
             this.label_NotLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_NotLogin.Visible = false;
             // 
+            // label_StarRating
+            // 
+            this.label_StarRating.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_StarRating.Location = new System.Drawing.Point(407, 14);
+            this.label_StarRating.Name = "label_StarRating";
+            this.label_StarRating.Size = new System.Drawing.Size(218, 19);
+            this.label_StarRating.TabIndex = 28;
+            this.label_StarRating.Text = "...";
+            this.label_StarRating.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Review
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 505);
+            this.Controls.Add(this.label_StarRating);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.progressBar1);
@@ -212,5 +224,6 @@
         public System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label_NotLogin;
+        private System.Windows.Forms.Label label_StarRating;
     }
 }
