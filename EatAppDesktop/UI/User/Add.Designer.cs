@@ -39,13 +39,11 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_Hash = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_Create
             // 
-            this.button_Create.Location = new System.Drawing.Point(12, 391);
+            this.button_Create.Location = new System.Drawing.Point(12, 332);
             this.button_Create.Name = "button_Create";
             this.button_Create.Size = new System.Drawing.Size(221, 31);
             this.button_Create.TabIndex = 7;
@@ -71,7 +69,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(13, 384);
+            this.progressBar1.Location = new System.Drawing.Point(13, 325);
             this.progressBar1.MarqueeAnimationSpeed = 10;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(220, 8);
@@ -86,7 +84,6 @@
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(221, 25);
             this.textBox_Password.TabIndex = 1;
-            this.textBox_Password.TextChanged += new System.EventHandler(this.textBox_Password_TextChanged);
             // 
             // label2
             // 
@@ -99,7 +96,7 @@
             // 
             // textBox_Email
             // 
-            this.textBox_Email.Location = new System.Drawing.Point(12, 326);
+            this.textBox_Email.Location = new System.Drawing.Point(12, 267);
             this.textBox_Email.Name = "textBox_Email";
             this.textBox_Email.Size = new System.Drawing.Size(221, 25);
             this.textBox_Email.TabIndex = 5;
@@ -107,7 +104,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 301);
+            this.label3.Location = new System.Drawing.Point(8, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 19);
             this.label3.TabIndex = 15;
@@ -116,7 +113,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(98, 244);
+            this.radioButton2.Location = new System.Drawing.Point(98, 185);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(67, 23);
             this.radioButton2.TabIndex = 4;
@@ -128,7 +125,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(12, 244);
+            this.radioButton1.Location = new System.Drawing.Point(12, 185);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(55, 23);
             this.radioButton1.TabIndex = 3;
@@ -139,36 +136,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 211);
+            this.label4.Location = new System.Drawing.Point(8, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 19);
             this.label4.TabIndex = 17;
             this.label4.Text = "Role";
             // 
-            // textBox_Hash
-            // 
-            this.textBox_Hash.Location = new System.Drawing.Point(12, 170);
-            this.textBox_Hash.Name = "textBox_Hash";
-            this.textBox_Hash.ReadOnly = true;
-            this.textBox_Hash.Size = new System.Drawing.Size(221, 25);
-            this.textBox_Hash.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 19);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Generated Hash";
-            // 
             // Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 431);
-            this.Controls.Add(this.textBox_Hash);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(250, 377);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label4);
@@ -207,7 +185,5 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox_Hash;
-        private System.Windows.Forms.Label label5;
     }
 }

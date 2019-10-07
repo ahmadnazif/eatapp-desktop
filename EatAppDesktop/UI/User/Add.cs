@@ -31,14 +31,13 @@ namespace EatAppDesktop.UI.User
                 SHOW_PROGRESSBAR(true);
 
                 var role = radioButton1.Checked ? UserRole.User : UserRole.Admin;
-                var msg = await api.AddUserAsync(textBox_Username.Text, textBox_Hash.Text, textBox_Email.Text, role);
+                var msg = await api.AddUserAsync(textBox_Username.Text, textBox_Password.Text, textBox_Email.Text, role);
                 SHOW_PROGRESSBAR(false);
                 MessageBox.Show(msg, "Response", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 textBox_Username.Clear();
                 textBox_Password.Clear();
                 textBox_Email.Clear();
-                textBox_Hash.Clear();
             }
         }
 
@@ -50,8 +49,6 @@ namespace EatAppDesktop.UI.User
         private void SHOW_PROGRESSBAR(bool show) => BeginInvoke(new Action(() => { progressBar1.Visible = show; }));
 
         private async void Add_FormClosed(object sender, FormClosedEventArgs e) => await mainScreen.LoadGvUserAsync();
-
-        private void textBox_Password_TextChanged(object sender, EventArgs e) => textBox_Hash.Text = PasswordHasher.GenerateHash(textBox_Password.Text);
     }
 
 }

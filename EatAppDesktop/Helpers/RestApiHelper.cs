@@ -66,7 +66,7 @@ namespace EatAppDesktop.Helpers
             }
         }
 
-        public async Task<List<User>> ListAllUserAsync()
+        public async Task<List<UserProfile>> ListAllUserAsync()
         {
             try
             {
@@ -74,18 +74,18 @@ namespace EatAppDesktop.Helpers
                 if (resp.IsSuccessStatusCode)
                 {
                     var json = await resp.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<List<User>>(json);
+                    return JsonConvert.DeserializeObject<List<UserProfile>>(json);
                 }
 
-                return new List<User>();
+                return new List<UserProfile>();
             }
             catch
             {
-                return new List<User>();
+                return new List<UserProfile>();
             }
         }
 
-        public async Task<User> GetUserAsync(string username)
+        public async Task<UserProfile> GetUserAsync(string username)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace EatAppDesktop.Helpers
                 if (resp.IsSuccessStatusCode)
                 {
                     var json = await resp.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<User>(json);
+                    return JsonConvert.DeserializeObject<UserProfile>(json);
                 }
 
                 return null;
@@ -131,14 +131,14 @@ namespace EatAppDesktop.Helpers
             }
         }
 
-        public async Task<string> AddUserAsync(string username, string passwordHash, string email, UserRole role)
+        public async Task<string> AddUserAsync(string username, string password, string email, UserRole role)
         {
             try
             {
-                User user = new User
+                UserInit user = new UserInit
                 {
                     Username = username,
-                    PasswordHash = passwordHash,
+                    Password = password,
                     Email = email,
                     Role = role
                 };
@@ -158,7 +158,7 @@ namespace EatAppDesktop.Helpers
         {
             try
             {
-                var user = new User
+                var user = new UserProfile
                 {
                     Username = username,
                     Fullname = fullname,

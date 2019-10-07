@@ -61,7 +61,8 @@
     <Compile Include="Helpers\AccAuthHelper.cs" />
     <Compile Include="Models\Fnb.cs" />
     <Compile Include="Models\FnbComment.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInit.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserAuthResponse.cs" />
     <Compile Include="Models\UserChangePassword.cs" />
     <Compile Include="Models\UserLogin.cs" />

@@ -19,9 +19,9 @@ namespace EatAppDesktop.UI
     {
         private readonly Switcher switcher;
         private readonly RestApiHelper api;
-        public List<Models.User> allUser;
+        public List<Models.UserProfile> allUser;
 
-        public MainScreen(Switcher switcher, RestApiHelper api, List<Models.User> allUser)
+        public MainScreen(Switcher switcher, RestApiHelper api, List<Models.UserProfile> allUser)
         {
             this.switcher = switcher;
             this.api = api;

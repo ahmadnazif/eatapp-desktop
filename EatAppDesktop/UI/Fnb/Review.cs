@@ -20,9 +20,9 @@ namespace EatAppDesktop.UI.Fnb
         private readonly RestApiHelper api;
         private readonly int fnbId;
         private readonly string fnbName;
-        private readonly List<Models.User> allUser;
+        private readonly List<Models.UserProfile> allUser;
 
-        public Review(MainScreen mainScreen, RestApiHelper api, List<Models.User> allUser, int fnbId, string fnbName)
+        public Review(MainScreen mainScreen, RestApiHelper api, List<Models.UserProfile> allUser, int fnbId, string fnbName)
         {
             this.mainScreen = mainScreen;
             this.api = api;
