@@ -205,6 +205,7 @@ namespace EatAppDesktop.UI
             dt.Columns.Add("Email");
             dt.Columns.Add("Role");
             dt.Columns.Add("Added on");
+            dt.Columns.Add("Last login");
 
             int i = 0;
             foreach (var user in userList)
@@ -215,6 +216,7 @@ namespace EatAppDesktop.UI
                 dr[2] = user.Email;
                 dr[3] = user.Role;
                 dr[4] = user.CreatedTime.ToDbDateTimeString();
+                dr[5] = user.LastLoginTime.HasValue ? user.LastLoginTime.Value.ToDbDateTimeString() : "-";
                 dt.Rows.Add(dr);
 
                 i++;
@@ -231,6 +233,7 @@ namespace EatAppDesktop.UI
             gv.Columns[2].Width = 200;
             gv.Columns[3].Width = 100;
             gv.Columns[4].Width = 170;
+            gv.Columns[5].Width = 170;
 
             CommonProperties(gv);
             SHOW_PROGRESSBAR(false);

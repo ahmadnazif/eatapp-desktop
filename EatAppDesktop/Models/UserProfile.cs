@@ -16,5 +16,6 @@ namespace EatAppDesktop.Models
         public string Avatar { get; set; }
         public UserRole Role { get; set; }
         public DateTime CreatedTime { get; set; }
+        public DateTime? LastLoginTime { get; set; }
     }
 }

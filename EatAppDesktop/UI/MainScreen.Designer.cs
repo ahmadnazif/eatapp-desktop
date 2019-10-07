@@ -115,7 +115,6 @@
             this.DataGridView_Fnb.Location = new System.Drawing.Point(6, 38);
             this.DataGridView_Fnb.Name = "DataGridView_Fnb";
             this.DataGridView_Fnb.ReadOnly = true;
-            this.DataGridView_Fnb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataGridView_Fnb.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridView_Fnb.Size = new System.Drawing.Size(723, 382);
             this.DataGridView_Fnb.TabIndex = 20;
@@ -219,7 +218,6 @@
             this.DataGridView_User.Location = new System.Drawing.Point(6, 38);
             this.DataGridView_User.Name = "DataGridView_User";
             this.DataGridView_User.ReadOnly = true;
-            this.DataGridView_User.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataGridView_User.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridView_User.Size = new System.Drawing.Size(723, 382);
             this.DataGridView_User.TabIndex = 24;
